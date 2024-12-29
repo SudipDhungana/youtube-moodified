@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube UI with TV Player</title>
+  <link rel="stylesheet" href="styles.css">
+ 
+</head>
+<body>
+ <!-- Header -->
+ <header class="header">
+    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+   
+     <!-- Logo Container -->
+     <div class="logo-container">
+      <img src="logo.jpeg.webp"  class="logo">
+    </div>
+
+  </header>
+  
+  <aside id="sidebar" class="sidebar">
+    <ul>
+      <li>
+        <a href="./index.html">
+          <span class="icon">🏠</span>
+          <span class="text">Home</span>
+        </a>
+      </li>
+      <li>
+        <a href="#trending">
+          <span class="icon">🔥</span>
+          <span class="text">Trending</span>
+        </a>
+      </li>
+      <li>
+        <a href="#subscriptions">
+          <span class="icon">📺</span>
+          <span class="text">Subscriptions</span>
+        </a>
+      </li>
+      <li>
+        <a href="#library">
+          <span class="icon">📚</span>
+          <span class="text">Library</span>
+        </a>
+      </li>
+      <li>
+        <a href="#history">
+          <span class="icon">⏳</span>
+          <span class="text">History</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-ads">
+    <img src="https://i.pinimg.com/1200x/69/0d/cd/690dcdae7d6769279e28f8df4fd74a27.jpg" alt="Coke Ad 1" class="ad-img">
+    <img src="https://mir-s3-cdn-cf.behance.net/project_modules/hd/ab4292113492483.602937919d46f.jpg" alt="Coke Ad 2" class="ad-img">
+  </div>
+  </aside>
+  <!-- Sidebar Toggle Button -->
+  <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+ <!-- First Screen -->
+
+  <div class="container" id="screen-one">
+    <div class="search-bar">
+      <input type="text" id="search-bar" placeholder="Search videos..." oninput="filterVideos()">
+    </div>
+    <div class="video-list" id="video-list"></div>
+  </div>
+  <!-- Second Screen -->
+  <div class="tv-screen" id="screen-two" style="display: none;">
+    <div class="tv-wrapper">
+      <!-- Left: TV Screen -->
+      <div class="tv-container">
+        <div class="search-bar">
+          <input type="text" id="url-input" placeholder="Enter YouTube URL..." onkeydown="playCustomVideo(event)">
+        </div>
+        <div class="tv">
+          <iframe 
+          id="tv-video" 
+          src="https://www.youtube.com/embed/<VIDEO_ID>?autoplay=1&controls=0&modestbranding=1&rel=0&fs=0&enablejsapi=1" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+        </div>
+        
+        <div class="tv-stand">
+          <div class="tv-stand">
+            <div class="media-players">
+              <button id="play-btn" onclick="playVideo()"><span class="icon">▶️</span> Play</button>
+              <button id="pause-btn" onclick="pauseVideo()"><span class="icon">⏸️</span> Pause</button>
+              <button id="mute-btn" onclick="muteVideo()"><span class="icon">🔇</span> Mute</button>
+              <button id="unmute-btn" onclick="unmuteVideo()"><span class="icon">🔊</span> Unmute</button>
+              <div id="video-title" class="video-title">Title of the Video</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

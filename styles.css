@@ -1,0 +1,387 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(90deg, rgb(4, 4, 18) 0%, rgb(177, 4, 53) 50%, rgb(44, 5, 103) 100%, rgba(82, 13, 4, 0.178) 50%);
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  z-index: 1000;
+}
+
+.logo-container {
+  position: fixed;
+  right: 100px;
+  top: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.logo {
+  width: 80px;
+  height: 50px;
+  object-fit: contain;
+  border-radius: 20%;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.7);
+}
+
+@media (max-width: 768px) {
+  .logo {
+      width: 35px;
+      height: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+      width: 30px;
+      height: 30px;
+  }
+}
+
+.menu-btn {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.sidebar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 210px;
+  height: calc(100vh - 60px);
+  background: transparent;
+  overflow-y: hidden;
+  transition: transform 0.3s ease, width 0.3s ease;
+  z-index: 999;
+}
+
+.sidebar.collapsed {
+  width: 35px;
+  height: 14rem;
+  overflow: hidden;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 16px;
+}
+
+.sidebar ul li {
+  margin-bottom: 16px;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+  display: block;
+  white-space: nowrap;
+}
+
+.sidebar.collapsed ul li a {
+  font-size: 14px;
+  text-align: center;
+}
+
+.user-icon img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.sidebar-ads {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  max-height: 50vh;
+  padding: 2rem;
+}
+
+.ad-img {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.container {
+  flex: 1;
+  margin-top: 60px;
+  margin-left: 240px;
+  overflow-y: auto;
+  background: transparent;
+  padding: 16px;
+  transition: margin-left 0.3s ease;
+}
+
+.container.collapsed {
+  margin-left: 80px;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+      position: fixed;
+      width: 240px;
+      height: 100vh;
+      top: 70px;
+      left: -240px;
+      z-index: 1000;
+      transition: left 0.3s ease;
+  }
+
+  .sidebar.active {
+      left: 0;
+  }
+
+  .container {
+      margin-left: 0;
+  }
+
+  .menu-btn {
+      position: relative;
+      z-index: 1100;
+  }
+
+  .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      transition: opacity 0.3s ease;
+  }
+
+  .overlay.active {
+      display: block;
+      opacity: 1;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .sidebar {
+      width: 180px;
+  }
+
+  .sidebar ul li {
+      font-size: 14px;
+  }
+}
+
+.search-bar {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#search-bar {
+  width: 100%;
+  max-width: 500px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 3px solid #090707;
+}
+
+.video-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  justify-items: center;
+}
+
+.video-item {
+  cursor: pointer;
+  text-align: center;
+}
+
+.video-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.video-item p {
+  margin-top: 10px;
+  font-size: 16px;
+  color: white;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.video-item:hover img {
+  transform: scale(1.05);
+}
+
+.tv-screen {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.tv-wrapper {
+  flex: 1 1 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.tv-container {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.tv {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 10px solid black;
+  border-radius: 15px;
+  background-color: #000;
+}
+
+.tv iframe {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  border: none;
+}
+
+.media-players {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px;
+}
+
+.media-players button {
+  background-color: #282828;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.media-players button:hover {
+  background-color: #444;
+  transform: scale(1.1);
+}
+
+.media-players .icon {
+  margin-right: 5px;
+}
+
+.video-title {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+}
+
+.ads-container {
+  flex: 1 1 25%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+
+.side-ad {
+  width: 100%;
+  max-width: 150px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .tv-wrapper {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+  }
+
+  .tv-container {
+      flex: 1 1 100%;
+  }
+
+  .ads-container {
+      flex: 1 1 100%;
+      flex-direction: row;
+      justify-content: space-around;
+      gap: 10px;
+  }
+
+  .side-ad {
+      width: 45%;
+      max-width: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .tv-wrapper {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+  }
+
+  .side-ad {
+      width: 90%;
+      max-width: 300px;
+  }
+
+  .tv {
+      max-width: 500px;
+      width: 100%;
+  }
+
+  .side-ad {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      object-position: center;
+  }
+}
